@@ -1,0 +1,19 @@
+# ROS / colcon generated directories
+build/
+install/
+log/
+devel/
+
+# Python generated files
+__pycache__/
+*.pyc
+*.pyo
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+
+# ROS bag data
+*.db3
+*.mcap

@@ -1,0 +1,108 @@
+EECE 5554 PA0 VERIFICATION REPORT
+Northeastern username: zhang.zhiqi2
+Generated: Sat Sep 19 09:32:34 PM PDT 2026
+Hostname: jojo-VirtualBox
+
+==============================================
+1. OPERATING SYSTEM (must be Ubuntu 24.04)
+==============================================
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.04.5 LTS
+Release:	24.04
+Codename:	noble
+
+==============================================
+2. CPU ARCHITECTURE
+==============================================
+uname -m  : x86_64
+kernel    : 7.0.0-31-generic
+Expected  : x86_64 on Intel/AMD hardware, aarch64 on Apple Silicon
+
+==============================================
+3. RESOURCES (RAM, CPU cores, free disk)
+==============================================
+CPU cores : 4
+--- free -h ---
+               total        used        free      shared  buff/cache   available
+Mem:           7.8Gi       1.8Gi       2.1Gi        64Mi       4.1Gi       6.0Gi
+Swap:          4.0Gi          0B       4.0Gi
+--- df -h / ---
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2        59G   15G   41G  27% /
+Minimum for this course: 4 cores, 8 GB RAM, 40 GB disk with 20 GB free
+
+==============================================
+4. ADMINISTRATOR AND DEVICE GROUPS
+==============================================
+user      : jojo
+groups    : jojo adm dialout cdrom sudo dip plugdev users lpadmin
+sudo group: PRESENT
+dialout   : PRESENT (required for USB sensors later in this course)
+
+==============================================
+5. NETWORK
+==============================================
+DNS resolution of archive.ubuntu.com: OK
+--- ping -c 3 archive.ubuntu.com ---
+--- archive.ubuntu.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2005ms
+rtt min/avg/max/mdev = 84.959/89.080/91.679/2.946 ms
+(Some campus networks block ping. The curl test below is the reliable one.)
+--- curl -sI https://archive.ubuntu.com (first line) ---
+HTTP/1.1 200 OK
+
+==============================================
+6. PACKAGE MANAGER
+==============================================
+Run this yourself and confirm it completes without errors:
+    sudo apt update && sudo apt upgrade
+--- apt-cache policy (first 6 lines) ---
+Package files:
+ 100 /var/lib/dpkg/status
+     release a=now
+ 500 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages
+     release v=24.04,o=Ubuntu,a=noble-security,n=noble,l=Ubuntu,c=multiverse,b=amd64
+     origin security.ubuntu.com
+
+==============================================
+7. USB (critical for later labs)
+==============================================
+--- USB devices BEFORE plugging anything in ---
+Bus 001 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 001 Device 002: ID 80ee:0021 VirtualBox USB Tablet
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+--- USB devices AFTER plugging in ---
+Bus 001 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 001 Device 002: ID 80ee:0021 VirtualBox USB Tablet
+Bus 001 Device 005: ID 046d:c52f Logitech, Inc. Unifying Receiver
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+--- Newly detected device(s) ---
+Bus 001 Device 005: ID 046d:c52f Logitech, Inc. Unifying Receiver
+USB passthrough: OK
+
+==============================================
+8. GIT
+==============================================
+git version 2.43.0
+user.name : zhiqi zhang
+user.email: zhang.zhiqi2@northeastern.edu
+
+==============================================
+9. STUDENT STATEMENT
+==============================================
+Install route: VirtualBox virtual machine on Windows 11.
+
+I chose VirtualBox because it is the recommended route for Windows users
+and provides the USB passthrough and GUI support needed for later ROS labs.
+
+One risk is that USB passthrough depends on the VirtualBox configuration
+and a USB device may remain attached to the Windows host instead of the
+Ubuntu guest.
+ 
+
+STATUS: I confirm that (a) Ubuntu 24.04 is installed and working, and
+(b) Git is installed and I am ready to use Git and GitHub.
+If anything above failed, describe the exact error message and your plan
+to fix it here instead:
+    
+

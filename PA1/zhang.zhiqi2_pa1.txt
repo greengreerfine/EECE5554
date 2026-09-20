@@ -1,0 +1,139 @@
+EECE 5554 PA1 VERIFICATION REPORT
+Northeastern username: zhang.zhiqi2
+Generated: Sun Sep 20 01:21:15 AM PDT 2026
+Workspace: /home/jojo/EECE5554/PA1/ros2_ws
+
+==============================================
+1. OPERATING SYSTEM
+==============================================
+Ubuntu 24.04.5 LTS
+arch: x86_64
+
+==============================================
+2. ROS 2 JAZZY INSTALL
+==============================================
+/opt/ros/jazzy/setup.bash: FOUND
+ROS_DISTRO   : jazzy
+ROS_VERSION  : 2
+AMENT_PREFIX : /home/jojo/EECE5554/PA1/ros2_ws/install/eece5554_pa1:/opt/ro
+ros2 CLI     : available
+installed ROS packages: 288
+.bashrc sources ROS automatically: YES
+
+==============================================
+3. BUILD TOOLS
+==============================================
+colcon  : usage: colcon [-h] [--log-base LOG_BASE] [--log-level LOG_LEVEL]
+rosdep  : 0.27.0
+git     : git version 2.43.0
+python3 : Python 3.12.3
+
+==============================================
+4. WORKSPACE LAYOUT
+==============================================
+src contents:
+eece5554_pa1
+package found: eece5554_pa1
+--- package.xml name and dependencies ---
+<name>eece5554_pa1</name>
+<exec_depend>rclpy</exec_depend>
+<exec_depend>std_msgs</exec_depend>
+
+==============================================
+5. COLCON BUILD
+==============================================
+Running: colcon build --symlink-install
+Starting >>> eece5554_pa1
+Finished <<< eece5554_pa1 [2.32s]
+
+Summary: 1 package finished [2.45s]
+build result: SUCCESS
+
+==============================================
+6. EXECUTABLES REGISTERED
+==============================================
+eece5554_pa1 listener
+eece5554_pa1 talker
+talker executable  : talker
+listener executable: listener
+
+==============================================
+7. TALKER AND LISTENER RUN TEST
+==============================================
+Starting eece5554_pa1 talker ...
+--- ros2 topic list ---
+/chatter
+/parameter_events
+/rosout
+topic /chatter: PRESENT
+--- ros2 topic info /chatter ---
+Type: std_msgs/msg/String
+Publisher count: 2
+Subscription count: 1
+--- one message from /chatter ---
+data: Robotics EECE 5554! Message 404
+---
+Starting eece5554_pa1 listener ...
+--- listener output (first 6 lines) ---
+[INFO] [1789892491.465514361] [listener]: I heard: ROBOTICS EECE 5554! MESSAGE 410
+[INFO] [1789892491.870168432] [listener]: I heard: ROBOTICS EECE 5554! MESSAGE 19
+[INFO] [1789892491.951761140] [listener]: I heard: ROBOTICS EECE 5554! MESSAGE 411
+[INFO] [1789892492.368995379] [listener]: I heard: ROBOTICS EECE 5554! MESSAGE 20
+[INFO] [1789892492.452313104] [listener]: I heard: ROBOTICS EECE 5554! MESSAGE 412
+[INFO] [1789892492.877086490] [listener]: I heard: ROBOTICS EECE 5554! MESSAGE 21
+
+published string : Robotics EECE 5554! Message 404
+listener heard   : ROBOTICS EECE 5554! MESSAGE 410
+CHECK: the listener modified the string. OK
+
+==============================================
+8. TURTLESIM SCREENSHOT
+==============================================
+found: ZHANG_turtle.png (16K)
+
+==============================================
+9. GIT HYGIENE
+==============================================
+build/install/log directories exist locally, which is normal.
+tracked files inside build/install/log: 0
+
+==============================================
+10. MACHINE-READABLE SUMMARY
+==============================================
+RESULT os=PASS
+RESULT ros=PASS
+RESULT bashrc=PASS
+RESULT colcon=PASS
+RESULT workspace=PASS
+RESULT build=PASS
+RESULT executables=PASS
+RESULT topic=PASS
+RESULT listener=PASS
+RESULT string_default=PASS
+RESULT string_modified=PASS
+RESULT screenshot=PASS
+RESULT gitignore=PASS
+
+==============================================
+11. STUDENT STATEMENT
+==============================================
+
+Complete the items below by editing this file in a text editor.
+
+WHAT YOUR TALKER PUBLISHES (the exact string):
+
+Robotics EECE 5554! Message <counter>
+
+HOW YOUR LISTENER MODIFIES IT (one sentence):
+
+My listener converts the received string to uppercase before logging it with "I heard:".
+
+ONE THING THAT DID NOT WORK THE FIRST TIME, AND HOW YOU FIXED IT:
+
+The verification script initially stopped while sourcing ROS 2 Jazzy with the error "AMENT_TRACE_SETUP_FILES: unbound variable". The script uses set -u, which conflicted with variables used by the ROS setup scripts. I fixed this by temporarily disabling nounset with set +u while sourcing the ROS and workspace setup files, then restoring it with set -u.s
+
+STATUS: I confirm that ROS 2 Jazzy is installed, my workspace builds, and my
+talker and listener run. If anything above failed, paste the exact error
+message and your plan to fix it here instead:
+    
+

@@ -4,5 +4,7 @@ This repository contains my coursework for EECE 5554.
 
 ## Assignments
 
-- `PA0/` - Ubuntu 24.04, VirtualBox, GitHub, networking, and USB setup verification
-- `Lab1/` - GPS driver and ROS 2 Lab 1 work
+
+- PA0/ - Ubuntu 24.04, VirtualBox, GitHub, networking, and USB passthrough setup verification
+- PA1/ - ROS 2 Jazzy workspace, turtlesim, and Python publisher/subscriber using the /chatter topic
+- Lab1/ - ROS 2 GPS driver, custom GPS message, NMEA GPGGA parsing, UTM conversion, and GPS sensor work

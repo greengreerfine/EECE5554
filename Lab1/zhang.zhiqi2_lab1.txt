@@ -1,6 +1,6 @@
 EECE 5554 LAB 1 SELF-CHECK REPORT
 Northeastern username: zhang.zhiqi2
-Generated: Fri Sep 18 03:47:25 PM PDT 2026
+Generated: Mon Sep 21 07:18:17 PM PDT 2026
 Workspace: /home/jojo/EECE5554/Lab1/ros2_ws
 
 ==============================================
@@ -33,33 +33,130 @@ launch file: src/gps_driver/launch/standalone_driver.launch.py
 3. BUILD
 ==============================================
 Running: colcon build --symlink-install
-Failed   <<< gps_msgs [4.44s, exited with code 2]
+Starting >>> gps_msgs
+Finished <<< gps_msgs [1.03s]
+Starting >>> gps_driver
+Finished <<< gps_driver [2.34s]
 
-Summary: 0 packages finished [4.82s]
-  1 package failed: gps_msgs
-  1 package had stderr output: gps_msgs
-  1 package not processed
-build: FAILED
-gmake[2]: *** [CMakeFiles/ament_cmake_python_symlink_gps_msgs.dir/build.make:70: CMakeFiles/ament_cmake_python_symlink_gps_msgs] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:471: CMakeFiles/ament_cmake_python_symlink_gps_msgs.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2
+Summary: 2 packages finished [3.64s]
+build: SUCCESS
 
 ==============================================
 4. MESSAGE INTERFACE
 ==============================================
-Skipped: build did not succeed.
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+float64 latitude
+float64 longitude
+float64 altitude
+float64 utm_easting
+float64 utm_northing
+uint8 zone
+string letter
+float64 hdop
+string gpgga_read
+all required fields present
 
 ==============================================
 5. DRIVER TEST AGAINST THE TEST VECTORS
 ==============================================
-Skipped: build, launch file, or emulator not available.
+
+----------------------------------------------
+Test vector: la
+----------------------------------------------
+emulator port: /dev/pts/2
+Test vector    : /home/jojo/5554-F26/sensor_emulator/data/gps_la.txt
+GPGGA sentence : $GPGGA,023458.230,3401.21189,N,11824.67797,W,1,12,1.0,0.0,M,0.0,M,,*76
+Checksum valid : yes
+
+field                                 expected               your driver   result
+--------------------------------------------------------------------------------
+header.frame_id                     GPS1_Frame                GPS1_Frame   PASS
+UTC seconds of day                        9298                      9298   PASS
+nanoseconds                          230000000                 230000000   PASS
+latitude                             34.020198         34.02019816666667   PASS
+longitude                          -118.411299       -118.41129950000001   PASS
+altitude                                   0.0                       0.0   PASS
+hdop                                       1.0                       1.0   PASS
+utm_easting                      369695.437354         369695.4373543182   PASS
+utm_northing                    3765293.495388        3765293.4953880184   PASS
+zone                                        11                        11   PASS
+letter                                       S                         S   PASS
+gpgga_read                  the GPGGA sentence  $GPGGA,023458.230,340...   PASS
+
+12 of 12 field checks passed.
+
+
+----------------------------------------------
+Test vector: boston
+----------------------------------------------
+emulator port: /dev/pts/2
+Test vector    : /home/jojo/5554-F26/sensor_emulator/data/gps_boston.txt
+GPGGA sentence : $GPGGA,143025.500,4220.38800,N,07105.35200,W,1,09,0.9,12.5,M,0.0,M,,*4C
+Checksum valid : yes
+
+field                                 expected               your driver   result
+--------------------------------------------------------------------------------
+header.frame_id                     GPS1_Frame                GPS1_Frame   PASS
+UTC seconds of day                       52225                     52225   PASS
+nanoseconds                          500000000                 500000000   PASS
+latitude                               42.3398                   42.3398   PASS
+longitude                             -71.0892        -71.08919999999999   PASS
+altitude                                  12.5                      12.5   PASS
+hdop                                       0.9                       0.9   PASS
+utm_easting                      327897.381252         327897.3812515165   PASS
+utm_northing                    4689618.783911         4689618.783911252   PASS
+zone                                        19                        19   PASS
+letter                                       T                         T   PASS
+gpgga_read                  the GPGGA sentence  $GPGGA,143025.500,422...   PASS
+
+12 of 12 field checks passed.
+
+
+----------------------------------------------
+Test vector: south
+----------------------------------------------
+emulator port: /dev/pts/2
+Test vector    : /home/jojo/5554-F26/sensor_emulator/data/gps_south.txt
+GPGGA sentence : $GPGGA,221740.750,3352.12800,S,15112.55800,E,1,08,1.2,25.3,M,0.0,M,,*4C
+Checksum valid : yes
+
+field                                 expected               your driver   result
+--------------------------------------------------------------------------------
+header.frame_id                     GPS1_Frame                GPS1_Frame   PASS
+UTC seconds of day                       80260                     80260   PASS
+nanoseconds                          750000000                 750000000   PASS
+latitude                              -33.8688                  -33.8688   PASS
+longitude                             151.2093                  151.2093   PASS
+altitude                                  25.3                      25.3   PASS
+hdop                                       1.2                       1.2   PASS
+utm_easting                      334368.633646        334368.63364640076   PASS
+utm_northing                     6250948.34536         6250948.345360274   PASS
+zone                                        56                        56   PASS
+letter                                       H                         H   PASS
+gpgga_read                  the GPGGA sentence  $GPGGA,221740.750,335...   PASS
+
+12 of 12 field checks passed.
+
 
 ==============================================
 6. DATA SETS
 ==============================================
-open_stationary: no rosbag found in /home/jojo/EECE5554/Lab1/data/open_stationary
-occluded_stationary: no rosbag found in /home/jojo/EECE5554/Lab1/data/occluded_stationary
-walking: no rosbag found in /home/jojo/EECE5554/Lab1/data/walking
+--- ros2 bag info open_stationary ---
+Duration:          397.110154936s
+Messages:          398
+Topic information: Topic: /gps | Type: gps_msgs/msg/Customgps | Count: 398 | Serialization Format: cdr
+--- ros2 bag info occluded_stationary ---
+Duration:          463.131621790s
+Messages:          437
+Topic information: Topic: /gps | Type: gps_msgs/msg/Customgps | Count: 437 | Serialization Format: cdr
+--- ros2 bag info walking ---
+Duration:          491.214698528s
+Messages:          492
+Topic information: Topic: /gps | Type: gps_msgs/msg/Customgps | Count: 492 | Serialization Format: cdr
 
 ==============================================
 7. GIT HYGIENE
@@ -75,37 +172,88 @@ RESULT env_emulator=PASS
 RESULT pkg_msgs=PASS
 RESULT pkg_driver=PASS
 RESULT launch_file=PASS
-RESULT build=FAIL
-RESULT interface=FAIL
-RESULT launch_arg=FAIL
-RESULT vector_la=FAIL
-RESULT vector_boston=FAIL
-RESULT vector_south=FAIL
-RESULT bag_open=FAIL
-RESULT bag_occluded=FAIL
-RESULT bag_walking=FAIL
+RESULT build=PASS
+RESULT interface=PASS
+RESULT launch_arg=PASS
+RESULT vector_la=PASS
+RESULT vector_boston=PASS
+RESULT vector_south=PASS
+RESULT bag_open=PASS
+RESULT bag_occluded=PASS
+RESULT bag_walking=PASS
 RESULT gitignore=PASS
+RESULT la.frame_id=PASS
+RESULT la.utc_seconds=PASS
+RESULT la.nanoseconds=PASS
+RESULT la.latitude=PASS
+RESULT la.longitude=PASS
+RESULT la.altitude=PASS
+RESULT la.hdop=PASS
+RESULT la.utm_easting=PASS
+RESULT la.utm_northing=PASS
+RESULT la.zone=PASS
+RESULT la.letter=PASS
+RESULT la.gpgga_read=PASS
+RESULT boston.frame_id=PASS
+RESULT boston.utc_seconds=PASS
+RESULT boston.nanoseconds=PASS
+RESULT boston.latitude=PASS
+RESULT boston.longitude=PASS
+RESULT boston.altitude=PASS
+RESULT boston.hdop=PASS
+RESULT boston.utm_easting=PASS
+RESULT boston.utm_northing=PASS
+RESULT boston.zone=PASS
+RESULT boston.letter=PASS
+RESULT boston.gpgga_read=PASS
+RESULT south.frame_id=PASS
+RESULT south.utc_seconds=PASS
+RESULT south.nanoseconds=PASS
+RESULT south.latitude=PASS
+RESULT south.longitude=PASS
+RESULT south.altitude=PASS
+RESULT south.hdop=PASS
+RESULT south.utm_easting=PASS
+RESULT south.utm_northing=PASS
+RESULT south.zone=PASS
+RESULT south.letter=PASS
+RESULT south.gpgga_read=PASS
 
 ==============================================
 9. STUDENT STATEMENT
 ==============================================
 
-Complete the items below by editing this file in a text editor.
-
 WHERE YOU COLLECTED THE OPEN DATA SET (landmark and known lat/lon):
-    
+
+Near Sushi Katsu-ya in Seattle, WA.
+Known/reference location: 47.619412, -122.338042.
+
 
 WHERE YOU COLLECTED THE OCCLUDED DATA SET (landmark and known lat/lon):
-    
+
+Near HEYTEA (South Lake Union) in Seattle, WA, where the GPS view of the sky
+was partially obstructed by nearby buildings.
+Known/reference location: 47.619897, -122.339460.
+
 
 WALKING DATA SET (start point, end point, approximate distance):
-    
+
+From Sellen Construction - Seattle, 227 Westlake Ave N, to Starbucks Coffee
+Company, 2011 Westlake Ave.
+
+Recorded start point: 47.620472, -122.338850.
+Recorded end point: 47.615273, -122.338240.
+The approximate straight-line displacement between the recorded start and
+end points was 580 m.
+
 
 ONE THING THAT DID NOT WORK THE FIRST TIME, AND HOW YOU FIXED IT:
-    
+
+The workspace initially failed to rebuild with colcon --symlink-install.
+I removed the generated build, install, and log directories and rebuilt the
+workspace from a clean state. After that, both gps_msgs and gps_driver built
+successfully.
+
 
 STATUS: I confirm my driver publishes Customgps on /gps and my three data sets
-are committed. If anything above failed, paste the exact error message and your
-plan to fix it here instead:
-    
-
+are committed. All checks in the Lab 1 self-check report passed.

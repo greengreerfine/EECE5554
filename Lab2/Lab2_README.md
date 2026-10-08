@@ -33,9 +33,30 @@ Dates and approximate session times below are from field notes; GGA HHMMSS times
 - Analysis: `analysis/analyze_lab2.py` computes `analysis/results/stationary_metrics.csv`, `walking_metrics.csv`, and `epochs.csv`; `analysis/plot_lab2.py` produces six figures under `analysis/plots/`.
 - This conversion preserves the recovered data for ROS tooling but may not satisfy the rubric's original field-recording requirement. The distinction is disclosed here for the grader.
 
-## Site photographs
 
-!!!!!!!!
+## Site Photographs
+
+Field photographs were collected at both the open-sky and occluded sites. At each site, four photographs were taken from the antenna position facing north, east, south, and west.
+
+### Open-Sky Site
+
+| North | East |
+|---|---|
+| ![Open North](photos/open_N.jpg) | ![Open East](photos/open_E.jpg) |
+
+| South | West |
+|---|---|
+| ![Open South](photos/open_S.jpg) | ![Open West](photos/open_W.jpg) |
+
+### Occluded Site
+
+| North | East |
+|---|---|
+| ![Occluded North](photos/occluded_N.jpg) | ![Occluded East](photos/occluded_E.jpg) |
+
+| South | West |
+|---|---|
+| ![Occluded South](photos/occluded_S.jpg) | ![Occluded West](photos/occluded_W.jpg) |
 
 ## Metrics table
 

@@ -1,0 +1,130 @@
+EECE 5554 LAB 3 SELF-CHECK REPORT
+Northeastern username: zhang.zhiqi2
+Generated: Thu Oct  8 02:21:26 PM PDT 2026
+Workspace: /home/jojo/EECE5554/Lab3/ros2_ws
+
+==============================================
+1. ENVIRONMENT
+==============================================
+ROS_DISTRO : jazzy
+pyserial: installed
+colcon: usage: colcon [-h] [--log-base LOG_BASE] [--log-level LOG_LEVEL]
+dialout group: PRESENT
+IMU emulator, checker, and test vectors: found in /home/jojo/5554-F26/sensor_emulator
+
+==============================================
+2. PACKAGES AND BUILD
+==============================================
+vn_msgs/msg/Vectornav.msg: found
+vn_driver/vn_driver/driver.py and vn_driver/launch/driver.launch.py: found
+Building in a temporary folder, so your own build/ and install/ are untouched...
+colcon build: succeeded
+
+==============================================
+3. MESSAGE DEFINITION
+==============================================
+ros2 interface show vn_msgs/msg/Vectornav, top-level fields:
+    std_msgs/Header header
+    sensor_msgs/Imu imu
+    sensor_msgs/MagneticField mag_field
+    string vnymr_read
+Checking field names and types:
+   std_msgs/Header              header       ok
+   sensor_msgs/Imu              imu          ok
+   sensor_msgs/MagneticField    mag_field    ok
+   string                       vnymr_read   ok
+
+==============================================
+4. YOUR DRIVER AGAINST THE TEST VECTORS
+==============================================
+Each vector runs for 14 s. The emulator starts at 10 Hz every time, so
+the rate only reaches 40 Hz if your driver writes register 7.
+
+   vector: stationary (imu_stationary.txt)
+      emulator port              /dev/pts/1
+      messages received          536 in 14 s, 536 matched to sentences the emulator sent
+      rate commands received     $VNWRG,07,40*59
+      measured rate              40.0 Hz over the last 6 s (target 40), 0 repeated messages
+      header                       PASS  536/536 messages
+      gyro_accel                   PASS  536/536 messages
+      mag                          PASS  536/536 messages
+      orientation                  PASS  536/536 messages
+      raw                          PASS  536/536 messages
+
+   vector: rotation (imu_rotation.txt)
+      emulator port              /dev/pts/2
+      messages received          539 in 14 s, 539 matched to sentences the emulator sent
+      orientation                  PASS  539/539 messages
+
+   vector: corrupt (imu_corrupt.txt)
+      emulator port              /dev/pts/1
+      messages received          509 in 14 s, 509 matched to sentences the emulator sent
+      damaged lines passed       27 while your driver kept publishing
+      damaged lines published    0
+
+==============================================
+5. LAUNCH ARGUMENT
+==============================================
+ports used: /dev/pts/1 /dev/pts/2 /dev/pts/1
+driver.launch.py declares a launch argument: yes
+ros2 launch vn_driver driver.launch.py port:=<port> worked on all three ports
+
+==============================================
+6. ROSBAGS
+==============================================
+   stationary: no rosbag2 directory (metadata.yaml) under /home/jojo/EECE5554/Lab3/data/stationary
+   motion: no rosbag2 directory (metadata.yaml) under /home/jojo/EECE5554/Lab3/data/motion
+
+==============================================
+7. GIT HYGIENE
+==============================================
+tracked files inside build/, install/, or log/: 0
+
+==============================================
+8. MACHINE-READABLE SUMMARY
+==============================================
+RESULT env_ros=PASS
+RESULT env_serial=PASS
+RESULT env_emulator=PASS
+RESULT pkg_msgs=PASS
+RESULT pkg_driver=PASS
+RESULT build=PASS
+RESULT interface=PASS
+RESULT launch_arg=PASS
+RESULT bag_stationary=FAIL
+RESULT bag_motion=FAIL
+RESULT gitignore=PASS
+RESULT stationary.messages=PASS
+RESULT stationary.rate_register=PASS
+RESULT stationary.rate_measured=PASS
+RESULT stationary.header=PASS
+RESULT stationary.gyro_accel=PASS
+RESULT stationary.mag=PASS
+RESULT stationary.orientation=PASS
+RESULT stationary.raw=PASS
+RESULT rotation.messages=PASS
+RESULT rotation.orientation=PASS
+RESULT corrupt.messages=PASS
+RESULT corrupt.survive=PASS
+RESULT corrupt.reject=PASS
+
+==============================================
+9. STUDENT STATEMENT
+==============================================
+
+Complete the items below by editing this file in a text editor.
+
+WHERE YOU RECORDED THE STATIONARY DATA SET (room, surface, distance from computers):
+    
+
+WHO RECORDED THE MOTION DATA SET WITH YOU, AND THE MOTIONS IN ORDER:
+    
+
+ONE THING THAT DID NOT WORK THE FIRST TIME, AND HOW YOU FIXED IT:
+    
+
+STATUS: I confirm my driver publishes Vectornav on /imu at 40 Hz and my two data
+sets are committed. If anything above failed, paste the exact error message and
+your plan to fix it here instead:
+    
+

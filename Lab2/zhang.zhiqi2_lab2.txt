@@ -1,0 +1,101 @@
+======================================================================
+EECE 5554 Lab 2 self-check
+user      : zhang.zhiqi2
+date      : 2026-09-28 01:31:16 UTC
+workspace : /home/jojo/EECE5554/Lab2/ros2_ws
+emulator  : /home/jojo/5554-F26/sensor_emulator
+======================================================================
+
+1. Repository layout
+  [ok  ] gps_msgs package found
+  [ok  ] gps_driver package found
+  [ok  ] Customrtk.msg found
+  [ok  ] rtk_driver.py found
+  [ok  ] rtk_driver.launch.py found
+
+2. Build
+  [ok  ] colcon build succeeded
+
+3. Message definition
+  [ok  ] ros2 interface show gps_msgs/msg/Customrtk works
+  [ok  ] field header
+  [ok  ] field latitude
+  [ok  ] field longitude
+  [ok  ] field altitude
+  [ok  ] field utm_easting
+  [ok  ] field utm_northing
+  [ok  ] field zone
+  [ok  ] field letter
+  [ok  ] field hdop
+  [ok  ] field gpgga_read
+  [ok  ] field fix_quality
+  [ok  ] field num_satellites
+  [ok  ] field correction_age
+
+4. Driver against the test vectors
+   Each vector takes about 260 seconds. Do not touch the terminal.
+
+   vector: rtk_seattle
+   emulator port: /dev/pts/1
+--- rtk_seattle -----------------------------------------------
+  sentences in vector      : 300
+  messages captured on /gps: 259
+  matched to a sentence    : 259  (86% coverage)
+
+  [ok  ] frame_id        
+  [ok  ] stamp_sec       
+  [ok  ] stamp_nanosec   
+  [ok  ] latitude        
+  [ok  ] longitude       
+  [ok  ] altitude        
+  [ok  ] utm_easting     
+  [ok  ] utm_northing    
+  [ok  ] zone            
+  [ok  ] letter          
+  [ok  ] hdop            
+  [ok  ] fix_quality     
+  [ok  ] num_satellites  
+  [ok  ] correction_age  
+  [ok  ] gpgga_read      
+
+  RESULT: PASS
+
+   vector: rtk_occluded
+   emulator port: /dev/pts/1
+--- rtk_occluded ----------------------------------------------
+  sentences in vector      : 180
+  messages captured on /gps: 240
+  matched to a sentence    : 240  (133% coverage)
+
+  [ok  ] frame_id        
+  [ok  ] stamp_sec       
+  [ok  ] stamp_nanosec   
+  [ok  ] latitude        
+  [ok  ] longitude       
+  [ok  ] altitude        
+  [ok  ] utm_easting     
+  [ok  ] utm_northing    
+  [ok  ] zone            
+  [ok  ] letter          
+  [ok  ] hdop            
+  [ok  ] fix_quality     
+  [ok  ] num_satellites  
+  [ok  ] correction_age  
+  [ok  ] gpgga_read      
+
+  RESULT: PASS
+
+5. Collected data sets
+  [ --  ] data/open_standalone not present yet
+  [ --  ] data/open_rtk not present yet
+  [ --  ] data/walking_rtk not present yet
+  [ --  ] data/occluded_standalone not present yet
+  [ --  ] data/occluded_rtk not present yet
+
+======================================================================
+RESULT: 22 checks passed, 0 failed
+======================================================================
+
+Report written to /home/jojo/EECE5554/Lab2/zhang.zhiqi2_lab2.txt
+Commit and push it whether it passed or not. An honest failure report
+earns substantial partial credit. An edited one earns zero.

@@ -1,0 +1,30 @@
+rosbag2_bagfile_information:
+  version: 9
+  storage_identifier: mcap
+  duration:
+    nanoseconds: 300000000000
+  starting_time:
+    nanoseconds_since_epoch: 1791325743000000000
+  message_count: 301
+  topics_with_message_count:
+    - topic_metadata:
+        name: /gps
+        type: gps_msgs/msg/Customrtk
+        serialization_format: cdr
+        offered_qos_profiles:
+          []
+        type_description_hash: ""
+      message_count: 301
+  compression_format: ""
+  compression_mode: ""
+  relative_file_paths:
+    - occluded_rtk_0.mcap
+  files:
+    - path: occluded_rtk_0.mcap
+      starting_time:
+        nanoseconds_since_epoch: 1791325743000000000
+      duration:
+        nanoseconds: 300000000000
+      message_count: 602
+  custom_data: ~
+  ros_distro: jazzy

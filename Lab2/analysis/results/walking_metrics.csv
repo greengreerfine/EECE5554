@@ -1,0 +1,2 @@
+epochs,valid_position_epochs,start_end_displacement_m,cumulative_gnss_path_m,perpendicular_rmse_m,max_abs_perpendicular_m,quality_distribution
+201,201,214.69153795942725,296.8430266310901,1.548775048562882,9.161049267970402,"{1: 4, 2: 37, 4: 80, 5: 80}"
